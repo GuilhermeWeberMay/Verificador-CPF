@@ -19,8 +19,13 @@ public class Verificador_CPF {
                     qtdNumeroCpf++;
                 }
             }
-            // Se não tiver 11 números CPF inválido
-            if (qtdNumeroCpf != 11) {
+            // Se tiver 11 começa o algoritmo para verificar se é um CPF legitimo
+            if (qtdNumeroCpf == 11) {
+                for (int i = 0; i < 11; i++){
+                    cpfEntrada.charAt(i);
+                }
+            }
+            else {
                 System.out.println("CPF invalido");
             }
         }
