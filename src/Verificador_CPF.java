@@ -9,7 +9,7 @@ public class Verificador_CPF {
         // Declaração de variavies homogeneas
         char[] cpf = new char[11];
         // Entrada de dados
-        System.out.print("Somente números \nFavor informe seu CPF: ");
+        System.out.print("Somente números \nFavor informe seu CPF:");
         cpfEntrada =read.next();
         // Verificação de quantidade de carasteres informados pelo usuario
         qtdCaracterCpf = cpfEntrada.length();
