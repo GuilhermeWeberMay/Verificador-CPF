@@ -6,6 +6,8 @@ public class Verificador_CPF {
         // Declaração da variavel
         String cpfEntrada;
         int qtdCaracterCpf, qtdNumeroCpf = 0;
+        // Declaração de variavies homogeneas
+        char[] cpf = new char[11];
         // Entrada de dados
         System.out.print("Somente números \nFavor informe seu CPF: ");
         cpfEntrada =read.next();
@@ -22,7 +24,8 @@ public class Verificador_CPF {
             // Se tiver 11 começa o algoritmo para verificar se é um CPF legitimo
             if (qtdNumeroCpf == 11) {
                 for (int i = 0; i < 11; i++){
-                    cpfEntrada.charAt(i);
+                    // Armazenamento dos digitos em um vetor
+                    cpf[i] = cpfEntrada.charAt(i);
                 }
             }
             else {
@@ -32,6 +35,9 @@ public class Verificador_CPF {
         else {
             System.out.println("CPF invalido");
         }
-        System.out.print(qtdNumeroCpf);
+        System.out.println(qtdNumeroCpf);
+        for (int i = 0; i < qtdNumeroCpf; i++){
+            System.out.print(cpf[i]);
+        }
     }
 }
