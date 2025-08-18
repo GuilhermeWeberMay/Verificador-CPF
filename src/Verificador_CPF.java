@@ -40,5 +40,6 @@ public class Verificador_CPF {
             System.out.print(cpf[i]);
         }
         // teste comentaria IFSC
+        // teste comentario ifsc - desktop
     }
 }
