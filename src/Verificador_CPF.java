@@ -5,7 +5,7 @@ public class Verificador_CPF {
         Scanner read = new Scanner(System.in);
         // Declaração da variavel
         String cpfEntrada;
-        int qtdCaracterCpf, qtdNumeroCpf = 0, somaPrimeiroDigito = 0;
+        int qtdCaracterCpf, qtdNumeroCpf = 0, somaPrimeiroDigito = 0, somaSegundoDigito = 0;
         // Declaração de variavies homogeneas
         int[] cpf = new int[11];
         int[] primeiroDigito = new int[11];
@@ -35,9 +35,9 @@ public class Verificador_CPF {
                 somaPrimeiroDigito += primeiroDigito[i];
                 }
                 // Verificação do segundo digito, seria este número representado por X - 000.000.000-0X
-                for (int i = 0; i < 9; i++){
-                    primeiroDigito[i] = Character.getNumericValue(cpf[i]) * (10 - i);
-                    somaPrimeiroDigito += primeiroDigito[i];
+                for (int i = 0; i <= 9; i++){
+                    segundoDigito[i] = Character.getNumericValue(cpf[i]) * (11 - i);
+                    somaSegundoDigito += segundoDigito[i];
                 }
             }
             else {
@@ -57,5 +57,6 @@ public class Verificador_CPF {
         }
         System.out.println("\n");
         System.out.println(somaPrimeiroDigito);
+        System.out.println(somaSegundoDigito);
     }
 }
