@@ -39,7 +39,5 @@ public class Verificador_CPF {
         for (int i = 0; i < qtdNumeroCpf; i++){
             System.out.print(cpf[i]);
         }
-        // teste comentaria IFSC
-        // teste comentario ifsc - desktop
     }
 }
