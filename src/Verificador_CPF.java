@@ -5,9 +5,11 @@ public class Verificador_CPF {
         Scanner read = new Scanner(System.in);
         // Declaração da variavel
         String cpfEntrada;
-        int qtdCaracterCpf, qtdNumeroCpf = 0;
+        int qtdCaracterCpf, qtdNumeroCpf = 0, somaPrimeiroDigito = 0, somaSegundoDigito = 0, restoPrimeiroDigito, restoSegundoDigito;
         // Declaração de variavies homogeneas
-        char[] cpf = new char[11];
+        int[] cpf = new int[11];
+        int[] primeiroDigito = new int[11];
+        int[] segundoDigito = new int[11];
         // Entrada de dados
         System.out.print("Somente números \nFavor informe seu CPF:");
         cpfEntrada =read.next();
@@ -25,21 +27,44 @@ public class Verificador_CPF {
             if (qtdNumeroCpf == 11) {
                 for (int i = 0; i < 11; i++){
                     // Armazenamento dos digitos em um vetor
-                    cpf[i] = cpfEntrada.charAt(i);
+                    cpf[i] = Character.getNumericValue(cpfEntrada.charAt(i));
+                    // 1° o chartAt pega o caracter
+                    // 2° o Character.getNumericValue pega o caracter e transforma em int
+                }
+                // Verificação do primeiro digito, seria este número representado por X - 000.000.000-X0
+                for (int i = 0; i < 9; i++){
+                    primeiroDigito[i] = cpf[i] * (10 - i);
+                    somaPrimeiroDigito += primeiroDigito[i];
+                }
+                // Verificação do segundo digito, seria este número representado por X - 000.000.000-0X
+                for (int i = 0; i <= 9; i++){
+                    segundoDigito[i] = cpf[i] * (11 - i);
+                    somaSegundoDigito += segundoDigito[i];
+                }
+                // Verificação para ver se 10° digito é verdadeiro, se o resto for igual o 10° digito é valido
+                restoPrimeiroDigito = (somaPrimeiroDigito * 10) % 11;
+                if (restoPrimeiroDigito == 10) {
+                    restoPrimeiroDigito = 0;
+                }
+                restoSegundoDigito = (somaSegundoDigito * 10) % 11;
+                if (restoSegundoDigito == 10) {
+                    restoSegundoDigito = 0;
+                }
+                System.out.println(restoPrimeiroDigito + " " + restoSegundoDigito);
+                System.out.println(cpf[9]+" "+cpf[10]);
+                // No cpf[9] esta dando o valor em char, não valor em int
+                if (restoPrimeiroDigito == cpf[9] && restoSegundoDigito == cpf[10]){
+                    System.out.println("O CPF é valido");
+                } else {
+                    System.out.println("CPF 1invalido");
                 }
             }
             else {
-                System.out.println("CPF invalido");
+                System.out.println("CPF 2invalido");
             }
         }
         else {
-            System.out.println("CPF invalido");
+            System.out.println("CPF 3invalido");
         }
-        System.out.println(qtdNumeroCpf);
-        for (int i = 0; i < qtdNumeroCpf; i++){
-            System.out.print(cpf[i]);
-        }
-        // teste comentaria IFSC
-        // teste comentario ifsc - desktop
     }
 }
