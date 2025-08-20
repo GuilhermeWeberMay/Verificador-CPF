@@ -52,7 +52,6 @@ public class Verificador_CPF {
                 }
                 System.out.println(restoPrimeiroDigito + " " + restoSegundoDigito);
                 System.out.println(cpf[9]+" "+cpf[10]);
-                // No cpf[9] esta dando o valor em char, não valor em int
                 if (restoPrimeiroDigito == cpf[9] && restoSegundoDigito == cpf[10]){
                     System.out.println("O CPF é valido");
                 } else {
