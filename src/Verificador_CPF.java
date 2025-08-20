@@ -27,25 +27,33 @@ public class Verificador_CPF {
             if (qtdNumeroCpf == 11) {
                 for (int i = 0; i < 11; i++){
                     // Armazenamento dos digitos em um vetor
-                    cpf[i] = cpfEntrada.charAt(i);
+                    cpf[i] = Character.getNumericValue(cpfEntrada.charAt(i));
+                    // 1° o chartAt pega o caracter
+                    // 2° o Character.getNumericValue pega o caracter e transforma em int
                 }
                 // Verificação do primeiro digito, seria este número representado por X - 000.000.000-X0
                 for (int i = 0; i < 9; i++){
-                primeiroDigito[i] = Character.getNumericValue(cpf[i]) * (10 - i);
+                primeiroDigito[i] = cpf[i] * (10 - i);
                 somaPrimeiroDigito += primeiroDigito[i];
                 }
                 // Verificação do segundo digito, seria este número representado por X - 000.000.000-0X
                 for (int i = 0; i <= 9; i++){
-                    segundoDigito[i] = Character.getNumericValue(cpf[i]) * (11 - i);
+                    segundoDigito[i] = cpf[i] * (11 - i);
                     somaSegundoDigito += segundoDigito[i];
                 }
                 // Verificação para ver se 10° digito é verdadeiro, se o resto for igual o 10° digito é valido
-                restoPrimeiroDigito = somaPrimeiroDigito * 10 % 11;
-                restoSegundoDigito = somaSegundoDigito * 10 % 11;
+                restoPrimeiroDigito = (somaPrimeiroDigito * 10) % 11;
+                if (restoPrimeiroDigito == 10) {
+                    restoPrimeiroDigito = 0;
+                }
+                restoSegundoDigito = (somaSegundoDigito * 10) % 11;
+                if (restoSegundoDigito == 10) {
+                    restoSegundoDigito = 0;
+                }
                 System.out.println(restoPrimeiroDigito + " " + restoSegundoDigito);
                 System.out.println(cpf[9]+" "+cpf[10]);
                 // No cpf[9] esta dando o valor em char, não valor em int
-                if (restoPrimeiroDigito == cpf[9] || restoSegundoDigito == cpf[10]){
+                if (restoPrimeiroDigito == cpf[9] && restoSegundoDigito == cpf[10]){
                     System.out.println("O CPF é valido");
                 } else {
                     System.out.println("CPF 1invalido");
