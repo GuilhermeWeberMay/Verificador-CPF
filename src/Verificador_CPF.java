@@ -68,3 +68,4 @@ public class Verificador_CPF {
         }
     }
 }
+// Guilherme Weber May
