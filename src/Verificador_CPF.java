@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Verificador_CPF {
     public static void main(String[] args) {
         Scanner read = new Scanner(System.in);
+
         // Declaração da variavel
         String cpfEntrada;
         int qtdCaracterCpf, qtdNumeroCpf = 0, somaPrimeiroDigito = 0, somaSegundoDigito = 0, restoPrimeiroDigito, restoSegundoDigito;
@@ -11,9 +12,13 @@ public class Verificador_CPF {
         int[] primeiroDigito = new int[10];
         int[] segundoDigito = new int[10];
         boolean formatacao = false;
+
         // Entrada de dados
+        System.out.println("O programa não funciona corretamente com os cpf's 000.000.000-00, 111.111.111-11, 222.222.222-22, 333.333.333-33, 444.444.444-44, 555.555.555-55" +
+                "666.666.666-66,\n777.777.777-77, 888.888.888-88, 999.999.999-99");
         System.out.print("Somente números \nFavor informe seu CPF:");
         cpfEntrada =read.next();
+
         // Verificação de quantidade de carasteres informados pelo usuario
         qtdCaracterCpf = cpfEntrada.length();
         // Verificação - se não tiver 11 digitos não é um cpf valido
