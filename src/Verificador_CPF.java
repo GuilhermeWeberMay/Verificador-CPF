@@ -8,8 +8,9 @@ public class Verificador_CPF {
         int qtdCaracterCpf, qtdNumeroCpf = 0, somaPrimeiroDigito = 0, somaSegundoDigito = 0, restoPrimeiroDigito, restoSegundoDigito;
         // Declaração de variavies homogeneas
         int[] cpf = new int[11];
-        int[] primeiroDigito = new int[11];
-        int[] segundoDigito = new int[11];
+        int[] primeiroDigito = new int[10];
+        int[] segundoDigito = new int[10];
+        boolean formatacao = false;
         // Entrada de dados
         System.out.print("Somente números \nFavor informe seu CPF:");
         cpfEntrada =read.next();
@@ -42,28 +43,42 @@ public class Verificador_CPF {
                     somaSegundoDigito += segundoDigito[i];
                 }
                 // Verificação para ver se 10° digito é verdadeiro, se o resto for igual o 10° digito é valido
+                // Verificação para o digito verificador não dar -1 e dar errado - primeiro digito verificador
                 restoPrimeiroDigito = (somaPrimeiroDigito * 10) % 11;
                 if (restoPrimeiroDigito == 10) {
                     restoPrimeiroDigito = 0;
                 }
+                // Verificação para o digito verificador não dar -1 e dar errado - segundo digito verificador
                 restoSegundoDigito = (somaSegundoDigito * 10) % 11;
                 if (restoSegundoDigito == 10) {
                     restoSegundoDigito = 0;
                 }
-                System.out.println(restoPrimeiroDigito + " " + restoSegundoDigito);
-                System.out.println(cpf[9]+" "+cpf[10]);
+                // Verificação para ver se o resto é igual ao numero informado
                 if (restoPrimeiroDigito == cpf[9] && restoSegundoDigito == cpf[10]){
                     System.out.println("O CPF é valido");
+                    formatacao = true;
                 } else {
-                    System.out.println("CPF 1invalido");
+                    System.out.println("CPF invalido");
                 }
             }
             else {
-                System.out.println("CPF 2invalido");
+                System.out.println("CPF invalido");
             }
         }
         else {
-            System.out.println("CPF 3invalido");
+            System.out.println("CPF invalido");
+        }
+        // Apresentação do CPF formatado corretamente
+        if (formatacao) {
+            for (int i = 0; i < 11; i++){
+                System.out.print(cpf[i]);
+                if(i == 2 || i == 5){
+                    System.out.print(".");
+                }
+                if (i == 8){
+                    System.out.print("-");
+                }
+            }
         }
     }
 }
