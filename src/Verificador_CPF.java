@@ -5,7 +5,7 @@ public class Verificador_CPF {
         Scanner read = new Scanner(System.in);
         // Declaração da variavel
         String cpfEntrada;
-        int qtdCaracterCpf, qtdNumeroCpf = 0, somaPrimeiroDigito = 0, somaSegundoDigito = 0;
+        int qtdCaracterCpf, qtdNumeroCpf = 0, somaPrimeiroDigito = 0, somaSegundoDigito = 0, restoPrimeiroDigito, restoSegundoDigito;
         // Declaração de variavies homogeneas
         int[] cpf = new int[11];
         int[] primeiroDigito = new int[11];
@@ -39,24 +39,24 @@ public class Verificador_CPF {
                     segundoDigito[i] = Character.getNumericValue(cpf[i]) * (11 - i);
                     somaSegundoDigito += segundoDigito[i];
                 }
+                // Verificação para ver se 10° digito é verdadeiro, se o resto for igual o 10° digito é valido
+                restoPrimeiroDigito = somaPrimeiroDigito * 10 % 11;
+                restoSegundoDigito = somaSegundoDigito * 10 % 11;
+                System.out.println(restoPrimeiroDigito + " " + restoSegundoDigito);
+                System.out.println(cpf[9]+" "+cpf[10]);
+                // No cpf[9] esta dando o valor em char, não valor em int
+                if (restoPrimeiroDigito == cpf[9] || restoSegundoDigito == cpf[10]){
+                    System.out.println("O CPF é valido");
+                } else {
+                    System.out.println("CPF 1invalido");
+                }
             }
             else {
-                System.out.println("CPF invalido");
+                System.out.println("CPF 2invalido");
             }
         }
         else {
-            System.out.println("CPF invalido");
+            System.out.println("CPF 3invalido");
         }
-        System.out.println(qtdNumeroCpf);
-        /*for (int i = 0; i < qtdNumeroCpf; i++){
-            System.out.print(cpf[i]);
-        }
-        System.out.println("\n");*/
-        for (int i = 0; i < 9; i++){
-            System.out.print(primeiroDigito[i]+" ");
-        }
-        System.out.println("\n");
-        System.out.println(somaPrimeiroDigito);
-        System.out.println(somaSegundoDigito);
     }
 }
