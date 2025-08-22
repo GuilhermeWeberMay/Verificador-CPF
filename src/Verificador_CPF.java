@@ -14,11 +14,11 @@ public class Verificador_CPF {
         boolean formatacao = false;
 
         // Entrada de dados
-        //System.out.println("O programa não funciona corretamente com os cpf's: ");
+        System.out.println("O programa não funciona corretamente com os cpf's: ");
         for (int i = 0; i < 10; i++) {
-            System.out.println(i+i+i+"."+i+i+i+"."+i+i+i+"-"+i+i);
+            System.out.println(i+""+i+""+i+"."+i+""+i+""+i+"."+i+""+i+""+i+"-"+i+i);
         }
-        System.out.println("Somente números \nFavor informe seu CPF:");
+        System.out.print("Somente números \nFavor informe seu CPF:");
         cpfEntrada =read.next();
 
         // Verificação de quantidade de carasteres informados pelo usuario
