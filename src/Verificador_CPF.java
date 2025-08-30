@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Verificador_CPF {
     public static void main(String[] args) {
         Scanner read = new Scanner(System.in);
-
+            
         // Declaração da variavel
         String cpfEntrada;
         int qtdCaracterCpf, qtdNumeroCpf = 0, somaPrimeiroDigito = 0, somaSegundoDigito = 0, restoPrimeiroDigito, restoSegundoDigito;
